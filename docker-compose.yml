@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  quiz_api:
+    build: ./server
+    command: npm run server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/home/quiz/api
