@@ -8,3 +8,20 @@ services:
       - "3000:3000"
     volumes:
       - ./server:/home/quiz/api
+  
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: joao
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: quizapp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./index.sql:/docker-entrypoint-initdb.d/index.sql
+    ports:
+      - "5432:5432"
+      
+
+volumes:
+  postgres_data:
