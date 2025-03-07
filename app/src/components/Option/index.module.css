@@ -1,0 +1,12 @@
+.option{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em 0;
+    width: 80%;
+    height: 15px;
+    border: none;
+    background-color: dodgerblue;
+    color: white;
+    padding: 1em;
+}
