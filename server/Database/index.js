@@ -11,7 +11,12 @@ const client = new Client({
 
 await client.connect()
 
-export const getAnyQuestions = async () => {
-    const questions = await client.query("SELECT * FROM question").catch(err => {return {erro: err}})
+export const getAnyQuestions = async amount => {
+    const questions = await client.query(`SELECT * FROM question ORDER BY RANDOM() LIMIT ${amount}`).catch(err => {return {erro: err}})
     return questions.rows
+}
+
+export const getThemes = async () => {
+    const themes = await client.query("SELECT DISTINCT theme FROM question ").catch(err => {return {erro: err}})
+    return themes.rows
 }
