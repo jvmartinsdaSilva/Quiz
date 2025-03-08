@@ -6,7 +6,7 @@
     width: 80%;
     height: 15px;
     border: none;
-    background-color: dodgerblue;
+    background: linear-gradient(l);
     color: white;
     padding: 1em;
 }
