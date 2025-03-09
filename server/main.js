@@ -4,7 +4,6 @@ import cors from 'cors'
 import { QuestionRouter } from './Routers/Questions/index.js'
 
 const server = express()
-server.use(express.json())
 server.use(cors())
 
 server.use("/questions", QuestionRouter)
