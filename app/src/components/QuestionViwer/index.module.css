@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    width: 80%;
+    height: auto;
+    align-items: center;
+    flex-direction: column;
+}
+
+.questionTitle{
+    font-size: 17px;
+    color: #52009f;
+    font-family: 'Times New Roman', Times, serif;
+
+}
