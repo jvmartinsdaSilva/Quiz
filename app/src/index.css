@@ -27,6 +27,25 @@ code {
   font-size: 14px;
 }
 
+.menu{
+  width: 80%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5em;
+
+}
+
+.menu button{
+  width: 50px;
+  height: 30px;
+  background: purple;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
 
 .title{
   font-size: 16px;
