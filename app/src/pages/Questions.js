@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from "react"
+import {useContext, useEffect } from "react"
 
 import { QuestionContext } from "../context/QuestionContext"
 import { QuestionViewer } from "../components/QuestionViwer/index.js"
