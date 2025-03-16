@@ -8,7 +8,8 @@ export const QuestionContext = createContext({
     QuestionNumber: {},
     selectQuestions: async theme => { },
     toggleQuestion: num => { },
-    saveAnswer: answer => { }
+    saveAnswer: answer => { },
+    resetGame: () => {}
 })
 
 export const QuestionsProvider = ({ children }) => {
@@ -43,6 +44,11 @@ export const QuestionsProvider = ({ children }) => {
     }
 
 
+    const resetGame = () => {
+        toggleQuestion(0)
+        setUserAnswer([])
+    }
+
     return <QuestionContext.Provider
         value={{
             QuestionNumber: questionNumber,
@@ -51,7 +57,8 @@ export const QuestionsProvider = ({ children }) => {
             QuestionsSelect: question,
             toggleQuestion,
             saveAnswer,
-            UsersAnswers: userAnswers
+            UsersAnswers: userAnswers,
+            resetGame
         }}>
         {children}
     </QuestionContext.Provider>
