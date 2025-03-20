@@ -8,7 +8,7 @@ services:
       - "3000:3000"
     volumes:
       - ./app:/home/quiz/app
-
+      - nodemodules_app:/home/quiz/app/node_modules
 
   quiz_api:
     build: ./server
@@ -17,6 +17,8 @@ services:
       - "3001:3001"
     volumes:
       - ./server:/home/quiz/api
+      - nodemodules_api:/home/quiz/api/node_modules
+
     depends_on:
       - database
 
@@ -37,3 +39,5 @@ services:
 
 volumes:
   postgres_data:
+  nodemodules_api: {}
+  nodemodules_app: {}
