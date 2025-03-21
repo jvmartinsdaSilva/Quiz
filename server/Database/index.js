@@ -34,3 +34,17 @@ export const getThemes = async () => {
         return { message: "Erro ao se conetar ao banco", erro: err }
     }
 }
+
+export const getQuestionsById = async ids => {
+    const query = `SELECT * FROM question WHERE id in (${ids.map(id => id)})`
+
+    try{
+        const client = await pool.connect()
+        const datas = await client.query(query)
+        client.release(true)
+        return {themes: datas.rows}
+
+    } catch (err) {
+        return {message: "Erro ao se conetar ao banco", erro: err}
+    }
+}
