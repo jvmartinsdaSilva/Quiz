@@ -10,41 +10,34 @@ const pool = new Pool({
     max: 30
 })
 
+export class DatabaseQuestioController{
 
-export const getAnyQuestions = async questionTheme => {
-    const query = `SELECT * FROM question WHERE question.theme = '${questionTheme}' ORDER BY RANDOM() LIMIT 3`
-    try {
-        const client = await pool.connect()
-        const datas = await client.query(query)
-        client.release(true)
-        return {datas: datas.rows}
-    } catch (err) {
-        return { message: "Erro ao se conetar ao banco", erro: err }
+    async #ececQuery(query){
+        try {
+            const client = await pool.connect()
+            const datas = await client.query(query)
+            client.release(true)
+            return {datas: datas.rows}
+        } catch (err) {
+            return { message: "Erro ao se conetar ao banco", erro: err }
+        }
     }
-}
 
-export const getThemes = async () => {
-    const query = "SELECT DISTINCT theme FROM question"
-    try{
-        const client = await pool.connect()
-        const datas = await client.query(query)
-        client.release(true)       
-        return {themes: datas.rows.map(data => data.theme)}
-    }  catch (err) {
-        return { message: "Erro ao se conetar ao banco", erro: err }
+    async getRandomQuestions(questionTheme){
+        const query = `SELECT * FROM question WHERE question.theme = '${questionTheme}' ORDER BY RANDOM() LIMIT 3`
+        const datas = this.#ececQuery(query)
+        return datas
     }
-}
 
-export const getQuestionsById = async ids => {
-    const query = `SELECT * FROM question WHERE id in (${ids.map(id => id)})`
+    async getThemes(){
+        const query = "SELECT DISTINCT theme FROM question"
+        const datas = this.#ececQuery(query)
+        return datas
+    }
 
-    try{
-        const client = await pool.connect()
-        const datas = await client.query(query)
-        client.release(true)
-        return {themes: datas.rows}
-
-    } catch (err) {
-        return {message: "Erro ao se conetar ao banco", erro: err}
+    async getQuestionsById(questionId){
+        const query = `SELECT * FROM question WHERE id in (${ids.map(id => id)})`
+        const datas = this.#ececQuery(query)
+        return datas
     }
 }
