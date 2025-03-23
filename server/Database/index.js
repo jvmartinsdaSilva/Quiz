@@ -13,7 +13,6 @@ const pool = new Pool({
 export class DatabaseQuestioController{
 
     async #execQuery(query){
-        // console.log(query)
         try {
             const client = await pool.connect()
             const datas = await client.query(query)
