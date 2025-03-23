@@ -8,7 +8,7 @@ export const Home = () => {
 
   const handleThemes = useCallback(async () => {
     const response = await getThemes()
-    setThemes(response.themes)
+    setThemes(response.datas.themes)
   }, [])
 
   useEffect(() => {

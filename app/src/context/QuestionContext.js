@@ -19,9 +19,9 @@ export const QuestionsProvider = ({ children }) => {
     const [userAnswers, setUserAnswer] = useState([])
 
     const selectQuestions = async theme => {
-        const questions_datas = await getQuestions(theme)
-        setQuestions(questions_datas.datas)
-        setQuestion(questions_datas.datas[questionNumber])
+        const response = await getQuestions(theme)
+        setQuestions(response.datas.questions)
+        setQuestion(response.datas.questions[questionNumber])
     }
 
     const toggleQuestion = num => {

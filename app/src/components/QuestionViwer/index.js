@@ -6,7 +6,7 @@ import { QuestionContext } from '../../context/QuestionContext.js';
 
 export const QuestionViewer = ({question}) => {
     const {QuestionNumber} = useContext(QuestionContext)
-    const questionId = `Q${question?.id}`
+    const questionId = `${question?.id}`
 
     return(
         <div className={s.container}>
