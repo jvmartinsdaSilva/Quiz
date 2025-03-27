@@ -36,6 +36,7 @@ export class DatabaseQuestioController{
     }
 
     async getQuestionsById(questionsId){
+        console.log("db")
         const query = `SELECT * FROM question WHERE id in (${questionsId.map(id => id)})`
         const response = await this.#execQuery(query)
         return response

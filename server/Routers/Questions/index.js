@@ -2,7 +2,8 @@ import express from 'express'
 
 import { DatabaseQuestioController } from '../../Database/index.js'
 import { CacheQuestions } from '../../Cache/index.js'
-import {formatQuestionsData} from '../../Filters/Questions.js'
+import {formatQuestionsData} from '../../Functions/FormatQuestions.js'
+import { validateUserAnswer} from '../../Functions/ValidadeAnswer.js'
 
 export const QuestionRouter = express.Router()
 
@@ -18,8 +19,8 @@ QuestionRouter.get("/getQuestions/", async (req, res) => {
     const {datas, message, erro} = await QuestionDatabase.getRandomQuestions(questionTheme)
     if(erro) return res.status(500).send(JSON.stringify({success: false ,message: message, datas: {}}))
 
+    Cache.saveQuestions(datas)
     const questions = formatQuestionsData(datas)
-    Cache.saveQuestions(questions)
     return res.status(202).send((JSON.stringify({success: true, message, datas: {questions}})))
 })
 
@@ -39,6 +40,21 @@ QuestionRouter.get("/themes", async (req, res) => {
 })
 
 QuestionRouter.post("/validadeAnswer", async (req, res) => {
-    const questionsId = req.body.userAnswer
+    const userAnswers = req.body.userAnswer
+    const questionsId = userAnswers?.map(userAnswer => Object.keys(userAnswer)[0])
 
+    const idsOffCache = []
+    const questions = []
+
+    questionsId?.map(id => {
+        const question = Cache.getQuestions(id)
+        if(question) questions.push(question)
+        else idsOffCache.push(id)
+    })
+
+    const questionsOffCache = await QuestionDatabase.getQuestionsById(idsOffCache)
+    questions.push(...questionsOffCache.datas)
+    const answerValidates = validateUserAnswer(userAnswers, questions)
+
+    res.status(202).send(JSON.stringify({success: true, message: "Respostas Validadas com suceso", datas: answerValidates}))
 })

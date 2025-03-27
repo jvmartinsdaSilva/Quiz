@@ -14,7 +14,10 @@ export class CacheQuestions {
         myCache.set("themes", themes, 600)
     }
 
-    getQuestions(){}
+    getQuestions(questionId){
+        const question = myCache.get(questionId)
+        return question
+    }
 
     saveQuestions(questions){
         questions.map(question => {
@@ -22,7 +25,6 @@ export class CacheQuestions {
             if(isCached) return
             myCache.set(question.id, question, 600)
         })
-        console.log(myCache.keys())
     }
 
 }
