@@ -5,10 +5,10 @@ export const formatQuestionsData = datas => {
             title: data.title,
             theme: data.theme,
             answers: [
-                {option_a: data.option_a},
-                {option_b: data.option_b},
-                {option_c: data.option_c},
-                {option_d: data.option_d},
+                {option_A: data.option_a},
+                {option_B: data.option_b},
+                {option_C: data.option_c},
+                {option_D: data.option_d},
             ]
         }
     })
