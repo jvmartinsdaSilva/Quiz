@@ -6,10 +6,12 @@ export const QuestionContext = createContext({
     QuestionsSelect: {},
     QuestionsList: [],
     QuestionNumber: {},
+    ValidationAnswer: [],
     selectQuestions: async theme => { },
     toggleQuestion: num => { },
     saveAnswer: answer => { },
-    resetGame: () => {}
+    resetGame: () => { },
+    setAnswersValidation: validation => {}
 })
 
 export const QuestionsProvider = ({ children }) => {
@@ -17,17 +19,19 @@ export const QuestionsProvider = ({ children }) => {
     const [question, setQuestion] = useState()
     const [questionNumber, setQuestionNumber] = useState(0)
     const [userAnswers, setUserAnswer] = useState([])
+    const [results, setResults] = useState([])
 
     const selectQuestions = async theme => {
         const response = await getQuestions(theme)
         setQuestions(response.datas.questions)
-        setQuestion(response.datas.questions[questionNumber])
+        setQuestion(response.datas.questions[0])
+        console.log(response.datas.questions)
     }
 
     const toggleQuestion = num => {
         if (num < 0 || num > questions?.length - 1) return
-        setQuestionNumber(num) 
-        setQuestion(questions[num]) 
+        setQuestionNumber(num)
+        setQuestion(questions[num])
     }
 
     const saveAnswer = answer => {
@@ -37,7 +41,7 @@ export const QuestionsProvider = ({ children }) => {
 
         // Verifica se o Id da nova resposta esta incluso na lista de Ids , através de sua posição
         // Se estiver, através de sua posição, troca a resposta antiga da lista de respostas (userAnswers) pela nova resposta
-        if(position >= 0) userAnswers[position] = answer 
+        if (position >= 0) userAnswers[position] = answer
         else userAnswers.push(answer) // Se não estiver (nova resposta), apenas adiciona
 
         // console.log(userAnswers)
@@ -47,18 +51,23 @@ export const QuestionsProvider = ({ children }) => {
     const resetGame = () => {
         toggleQuestion(0)
         setUserAnswer([])
+        setResults([])
     }
+
+    const saveAnswerValidation = validations => setResults(validations)
 
     return <QuestionContext.Provider
         value={{
             QuestionNumber: questionNumber,
             QuestionsList: questions,
-            selectQuestions,
+            UsersAnswers: userAnswers,
             QuestionsSelect: question,
+            ValidationAnswer: results,
+            selectQuestions,
             toggleQuestion,
             saveAnswer,
-            UsersAnswers: userAnswers,
-            resetGame
+            resetGame,
+            setAnswersValidation: saveAnswerValidation
         }}>
         {children}
     </QuestionContext.Provider>

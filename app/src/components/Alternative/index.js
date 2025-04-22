@@ -12,7 +12,6 @@ export const Alternative = ({alternative, questionId}) => {
     const saveUserAnswer = () => {
         const answer = {[questionId]: Object.keys(alternative)[0]}
         saveAnswer(answer)
-        console.log(UsersAnswers)
     }
 
     return (

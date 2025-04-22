@@ -25,6 +25,7 @@ code {
   box-shadow: 0px 0px 15px #0000009c;
   background-color: rgb(249, 249, 249);
   font-size: 14px;
+  padding: .5em;
 }
 
 .menu{
@@ -49,4 +50,23 @@ code {
 
 .title{
   font-size: 16px;
+}
+
+.validation{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: .5em;
+}
+
+.confirm_btn{
+  width: 100px;
+  height: 30px;
+  border: 1px solid purple;
+  border-radius: 5px;
+  color: purple;
+  font-weight: bold;
+  cursor: pointer;
 }
