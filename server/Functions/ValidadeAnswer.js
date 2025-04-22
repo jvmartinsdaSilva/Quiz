@@ -1,5 +1,5 @@
 export const validateUserAnswer = (userAnswers, questions) => {
-    // Pega apenas as resposta da questão no formato: questionId: righ_option  {'1': option_a}
+    // Pega apenas as resposta da questão no formato: questionId: {righ_option, title} / Ex: {'1': {right_option: option_A, title: blá blá}}
     const answerQuestions = questions.reduce((a, v) => ({ ...a, [v.id]: {right_option: v.right_option, title: v.title}}), {}) 
 
     const answerValidates = userAnswers.map(userAnswer => {
