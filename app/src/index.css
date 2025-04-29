@@ -1,11 +1,30 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cal+Sans&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+*{
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+}
+
+html {
+  --delft-blue: #343D77ff;
+  --dark-purple: #261C2Cff;
+  --rose-quartz: #AB999Cff;
+  --champagne: #F8E2C1ff;
+  --pale-dogwood: #F1CEC8ff;
+  --coral: #F28458ff;
+  --white: #FFF7ED;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100vh;
+  color: var(--dark-purple);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  background: radial-gradient(circle at center, #F8E2C1ff 0%, #ffc2b3 60%, #F1CEC8ff 100%);
 }
 
 code {
@@ -13,7 +32,17 @@ code {
     monospace;
 }
 
-.container{
+.title{
+  font-family: "Merriweather",  sans-serif;
+  color: var(--coral);
+  font-size: 3em;
+  font-weight: bolder;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+
+.container {
   margin: 2em auto;
   display: flex;
   flex-direction: column;
@@ -28,7 +57,7 @@ code {
   padding: .5em;
 }
 
-.menu{
+.menu {
   width: 80%;
   height: auto;
   display: flex;
@@ -38,7 +67,7 @@ code {
 
 }
 
-.menu button{
+.menu button {
   width: 50px;
   height: 30px;
   background: purple;
@@ -48,11 +77,8 @@ code {
   cursor: pointer;
 }
 
-.title{
-  font-size: 16px;
-}
 
-.validation{
+.validation {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -61,7 +87,7 @@ code {
   padding: .5em;
 }
 
-.confirm_btn{
+.confirm_btn {
   width: 100px;
   height: 30px;
   border: 1px solid purple;
