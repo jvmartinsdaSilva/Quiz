@@ -14,7 +14,7 @@
     flex-direction: column;
     width: 40%;
     border-right: 1px solid var(--rose-quartz);
-    padding: .5em;
+    padding: .25em;
 }
 .container_right{
     margin: 1em 1em 1em 0em;
