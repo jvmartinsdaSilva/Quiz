@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cal+Sans&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tagesschrift&display=swap');
 
 *{
   padding: 0;
@@ -8,6 +8,7 @@
 }
 
 html {
+  /* Colors  */
   --delft-blue: #343D77ff;
   --dark-purple: #261C2Cff;
   --rose-quartz: #AB999Cff;
@@ -15,6 +16,10 @@ html {
   --pale-dogwood: #F1CEC8ff;
   --coral: #F28458ff;
   --white: #FFF7ED;
+
+  /* Fonts */
+
+  --title_font: 'Tagesschrift';
 }
 
 body {
@@ -35,7 +40,7 @@ code {
 }
 
 .title{
-  font-family: "Merriweather",  sans-serif;
+  font-family: var(--title_font),  sans-serif;
   color: var(--coral);
   font-size: 3em;
   font-weight: bolder;
@@ -69,25 +74,8 @@ code {
 
 }
 
-.menu button {
-  width: 50px;
-  height: 30px;
-  background: purple;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
 
 
-.validation {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: .5em;
-}
 
 .confirm_btn {
   width: 100px;

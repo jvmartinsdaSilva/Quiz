@@ -22,7 +22,10 @@
     flex-direction: column;
     width: 60%;
     /* border: 1px solid black; */
+    background-position: center;
+    background-repeat: no-repeat;
     padding: .5em;
+    text-align: center;
 }
 
 

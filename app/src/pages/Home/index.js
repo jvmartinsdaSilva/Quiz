@@ -3,18 +3,22 @@ import { Input } from '../../components/Input/index.js'
 import s from './index.module.css'
 
 export const Home = () => {
+
+
     return (
         <div className={s.WelcomeCard}>
-            <form className={s.container_left}>
-                <h3 className='title'>LOGIN</h3>
-                <br/>   
-                <p className={s.textInfo}>Entre agora e comece a testar seus conhecimentos</p>
-                <Input placeholder='Informe seu e-mail' text='EMAIL:' type='email'/>
-                <Input placeholder='Informe sua senha' text='SENHA:' type='password' />
-                <Button textInfo='Login' />
+            <div className={s.container_left}>
+                <form>
+                    <h3 className='title'>LOGIN</h3>
+                    <br />
+                    <p className={s.textInfo}>Entre agora e comece a testar seus conhecimentos</p>
+                    <Input placeholder='Informe seu e-mail' text='EMAIL:' type='email' />
+                    <Input placeholder='Informe sua senha' text='SENHA:' type='password' />
+                    <Button textInfo='Login' />
+                </form>
                 <span className={s.textInfo}>Não tem uma Conta ? Cadastre-se agora</span>
-                <Button textInfo='Cadastro' />
-            </form>
+                <Button textInfo='Cadastre-se' />
+            </div>
             <div className={s.container_right}>
                 <h1 className='title'>Quizzaria </h1>
                 <br />
