@@ -9,6 +9,15 @@ CREATE TABLE question (
     option_D VARCHAR(150) NOT NULL
 );
 
+
+CREATE TABLE users (
+    id INT NOT NULL PRIMARY KEY,
+    email VARCHAR(300) NOT NULL,
+    name_alias VARCHAR(100) NOT NULL,
+    password VARCHAR(500) NOT NULL,
+    user_points INT NOT NULL DEFAULT 0
+);
+
 INSERT INTO question (id, title, theme, right_option, option_A, option_B, option_C, option_D) VALUES
 (1, 'Em que ano ocorreu a Independência do Brasil?', 'História', 'option_B', '1808', '1822', '1889', '1500'),
 (2, 'Quem foi o primeiro presidente do Brasil?', 'História', 'option_C', 'Dom Pedro II', 'Juscelino Kubitschek', 'Deodoro da Fonseca', 'Getúlio Vargas'),

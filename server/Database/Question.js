@@ -1,14 +1,5 @@
-import pg from 'pg'
+import { pool } from "./Connection.js"
 
-const { Pool } = pg
-const pool = new Pool({
-    user: 'joao',
-    password: 'example',
-    host: 'database',
-    port: 5432,
-    database: 'quizapp',
-    max: 30
-})
 
 export class DatabaseQuestioController{
 
