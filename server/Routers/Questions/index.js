@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { DatabaseQuestioController } from '../../Database/index.js'
+import { DatabaseQuestioController } from '../../Database/Question.js'
 import { CacheQuestions } from '../../Cache/index.js'
 import { formatQuestionsData } from '../../Functions/FormatQuestions.js'
 import { validateUserAnswer } from '../../Functions/ValidadeAnswer.js'
