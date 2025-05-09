@@ -1,5 +1,5 @@
-import { text } from "express";
 import { pool } from "./Connection.js";
+
 
 export class DatabaseUserController {
     async #execQuery(query){
@@ -14,10 +14,10 @@ export class DatabaseUserController {
     }
 
     async registerUser(userDatas) {
-        const {name, email, password, userId=331} = userDatas
+        const {name, email, password} = userDatas
         const query = {
-            text: 'INSERT INTO users (id, email, name_alias, password) VALUES ($1, $2, $3, $4)',
-            values: [userId, email, name, password]
+            text: 'INSERT INTO users (email, name_alias, password) VALUES ($1, $2, $3)',
+            values: [email, name, password]
         }
         const response = await this.#execQuery(query)
         const message = !response.erro && "Usuário cadastrado com sucesso"

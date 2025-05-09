@@ -10,8 +10,10 @@ CREATE TABLE question (
 );
 
 
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
 CREATE TABLE users (
-    id INT NOT NULL PRIMARY KEY,
+    id UUID NOT NULL PRIMARY KEY UNIQUE DEFAULT gen_random_uuid(),
     email VARCHAR(300) NOT NULL,
     name_alias VARCHAR(100) NOT NULL,
     password VARCHAR(500) NOT NULL,
