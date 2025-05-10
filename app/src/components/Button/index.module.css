@@ -18,3 +18,8 @@
     margin: .15em 0;
     
 }
+
+.btn:hover{
+    background: var(--coral);
+    color: var(--white);
+}
