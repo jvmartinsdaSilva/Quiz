@@ -1,9 +1,11 @@
-import {useCallback, useEffect, useState} from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { getThemes } from '../../services/question_api.js'
 
 import { Card } from '../../components/Card/index.js'
 import { Option } from '../../components/Option/index.js'
+
+import s from './index.module.css'
 
 export const MenuGame = () => {
   const [themes, setThemes] = useState([])
@@ -17,12 +19,23 @@ export const MenuGame = () => {
     handleThemes()
   }, [handleThemes])
 
-  return ( 
-    <div className="App">
-      <Card>
-        <h1 className='title'>Quiz App</h1>
-        {themes?.map(theme => <Option key={theme} theme={theme} />)}
-      </Card>
+  return (
+    <Card>
+      <div className={s.container}>
+        <menubar className={s.userInfo}>
+          <span>
+            <span>User name</span>
+            <span>300 pontos</span>
+          </span>
+          <span>
+            ⚙️
+          </span>
+        </menubar>
+        <h3 className='title'>Escolha o tema</h3>
+        <div className={s.menu}>
+          {themes?.map(theme => <Option key={theme} theme={theme} />)}
+        </div>
       </div>
+    </Card>
   );
 }

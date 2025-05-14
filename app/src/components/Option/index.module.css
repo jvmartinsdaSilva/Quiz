@@ -2,12 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1em 0;
-    width: 80%;
+    width: 150px;
     height: 15px;
     border: none;
-    background: linear-gradient(to left top, #1c1ca5, #1e90ff);
-    color: white;
+    margin: .75em 0;
+    background: transparent;
+    border: 1px solid var(--coral);
+    color: var(--coral);
     padding: 1em;
     cursor: pointer;
     text-decoration: none;
