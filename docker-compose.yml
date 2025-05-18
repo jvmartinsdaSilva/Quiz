@@ -32,7 +32,8 @@ services:
       POSTGRES_DB: quizapp
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./index.sql:/docker-entrypoint-initdb.d/index.sql
+      - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./datas.sql:/docker-entrypoint-initdb.d/02-datas.sql
     ports:
       - "5432:5432"
       
