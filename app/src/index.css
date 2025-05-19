@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Tagesschrift&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tagesschrift&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 
 *{
   padding: 0;
@@ -8,18 +9,22 @@
 }
 
 html {
+  
   /* Colors  */
+
   --delft-blue: #343D77ff;
   --dark-purple: #261C2Cff;
   --rose-quartz: #AB999Cff;
   --champagne: #F8E2C1ff;
-  --pale-dogwood: #F1CEC8ff;
   --coral: #F28458ff;
+  --pale-coral: #ffc2b3;
+  --pale-dogwood: #F1CEC8ff;
   --white: #FFF7ED;
 
   /* Fonts */
 
   --title_font: 'Tagesschrift';
+  --default: 'Open Sans'
 }
 
 body {
@@ -31,12 +36,8 @@ body {
   color: var(--dark-purple);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(circle at center, #F8E2C1ff 0%, #ffc2b3 60%, #F1CEC8ff 100%);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background: radial-gradient(circle at center, var(--champagne) 0%, var(--pale-coral) 60%, var(--pale-dogwood) 100%);
+  font-family: var(--default);
 }
 
 .title{
@@ -47,7 +48,6 @@ code {
   text-align: center;
   letter-spacing: 5px;
 }
-
 
 .container {
   margin: 2em auto;
@@ -62,27 +62,4 @@ code {
   background-color: rgb(249, 249, 249);
   font-size: 14px;
   padding: .5em;
-}
-
-.menu {
-  width: 80%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: .5em;
-
-}
-
-
-
-
-.confirm_btn {
-  width: 100px;
-  height: 30px;
-  border: 1px solid purple;
-  border-radius: 5px;
-  color: purple;
-  font-weight: bold;
-  cursor: pointer;
 }

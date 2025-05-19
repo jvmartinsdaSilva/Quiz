@@ -2,10 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
+    width: 30%;
     height: 15px;
     border: none;
-    margin: .75em 0;
+    margin: .75em;
     background: transparent;
     border: 1px solid var(--coral);
     color: var(--coral);

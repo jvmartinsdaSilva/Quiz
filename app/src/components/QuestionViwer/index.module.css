@@ -7,8 +7,7 @@
 }
 
 .questionTitle{
-    font-size: 17px;
-    color: #52009f;
-    font-family: 'Times New Roman', Times, serif;
-
+    font-size: 16px;
+    color: var(--delft-blue);
+    margin: 1em 0;
 }

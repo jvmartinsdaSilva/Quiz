@@ -1,12 +1,29 @@
 .alternative{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: center;
+    width: 80%;
     height: 30px;
     margin: .45em;
-    padding: 0 2em;
     font-weight: bold;
     font-size: 16px;
-    background: lightgrey;
+}
+
+.alternative input{
+    z-index: -5;
+}
+
+.alternative span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    height: inherit;
+    border: 1px solid var(--coral);
+    cursor: pointer;
+}
+
+input:checked ~ span{
+    background: var(--delft-blue);
+    color: var(--champagne);
+    border: none;
 }
