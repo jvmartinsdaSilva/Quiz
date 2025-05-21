@@ -6,11 +6,10 @@ export class DatabaseUserController {
         try {
             const client = await pool.connect()
             const datas = await client.query(query)
-            client.release(true)
-            return {datas: datas.rows}
+            return {message: "Usuário cadastrado com sucesso", datas}
         } catch (err) {
-            return { message: "Erro ao se conetar ao banco", erro: err }
-        }
+            return { message: "Erro ao se conetar ao banco", erro: err }         
+        }  
     }
 
     async registerUser(userDatas) {
@@ -20,7 +19,10 @@ export class DatabaseUserController {
             values: [email, name, password]
         }
         const response = await this.#execQuery(query)
-        const message = !response.erro && "Usuário cadastrado com sucesso"
-        return {...response, message}
+
+        if(response.erro?.code == "23505") return {erro: response.erro, message: "Usuário ja cadastrado"}
+        if(response.erro) return {erro: response.erro, message: response.message}
+        
+        return response
     }
 }
