@@ -19,7 +19,6 @@ export class DatabaseUserController {
             values: [id, email, name, password]
         }
         const response = await this.#execQuery(query)
-        console.log(response)
         if(response.erro?.code == "23505") return {erro: response.erro, message: "Usuário ja cadastrado"}
         if(response.erro) return {erro: response.erro, message: response.message}
         

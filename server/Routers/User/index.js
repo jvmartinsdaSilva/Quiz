@@ -4,9 +4,10 @@ import {v4 as uuidv4} from "uuid"
 import { userSchema } from '../../Functions/UserSchema.js'
 import { DatabaseUserController } from '../../Database/Users.js'
 import { encryptingPassword } from '../../Functions/EncryptPassword.js'
-import { generateUserTolken } from '../../Functions/GenerateTolken.js'
+import { TolkenMenager } from '../../Functions/TolkenMenager.js'
 
 const UserDatabase = new DatabaseUserController()
+const TolkenMenu = new TolkenMenager()
 
 export const UserRouter = express.Router()
 
@@ -24,10 +25,8 @@ UserRouter.post("/register", async (req, res) => {
 
     if(registerResponse.erro) return res.status(400).send(JSON.stringify({success: false, message: registerResponse.message, datas: {}}))
     
-    const generateTolkenResponse = generateUserTolken(userDatas.name)
+    const generateTolken = TolkenMenu.generateUserTolken(userId)
 
-    if(generateTolkenResponse.erro) return res.status(500).send(JSON.stringify({success: false, message: generateTolkenResponse.message, datas: {}}))
-
-    
-    return res.status(202).send(JSON.stringify({success: true, message: registerResponse.message, datas: {tolken: generateUserTolken(userDatas.name).tolken}}))
+    if(generateTolken.erro) return res.status(500).send(JSON.stringify({success: false, message: generateTolkenResponse.message, datas: {}}))
+    return res.status(202).send(JSON.stringify({success: true, message: registerResponse.message, datas: {tolken: generateTolken.tolken}}))
 })
