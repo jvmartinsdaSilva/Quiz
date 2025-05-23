@@ -13,13 +13,13 @@ export class DatabaseUserController {
     }
 
     async registerUser(userDatas) {
-        const {name, email, password} = userDatas
+        const {id, name, email, password} = userDatas
         const query = {
-            text: 'INSERT INTO users (email, name_alias, password) VALUES ($1, $2, $3)',
-            values: [email, name, password]
+            text: 'INSERT INTO users (id, email, name_alias, password) VALUES ($1, $2, $3, $4)',
+            values: [id, email, name, password]
         }
         const response = await this.#execQuery(query)
-
+        console.log(response)
         if(response.erro?.code == "23505") return {erro: response.erro, message: "Usuário ja cadastrado"}
         if(response.erro) return {erro: response.erro, message: response.message}
         

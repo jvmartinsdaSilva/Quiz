@@ -1,4 +1,5 @@
-import express, { response } from 'express'
+import express from 'express'
+import {v4 as uuidv4} from "uuid"
 
 import { userSchema } from '../../Functions/UserSchema.js'
 import { DatabaseUserController } from '../../Database/Users.js'
@@ -10,6 +11,7 @@ const UserDatabase = new DatabaseUserController()
 export const UserRouter = express.Router()
 
 UserRouter.post("/register", async (req, res) => {
+    const userId = uuidv4()
     const {userDatas} = req.body
     const userDatasIsValid = await userSchema.validate(userDatas)
         .then(() => ({valid: true, message: "Dados validados com sucesso"}))
@@ -18,7 +20,7 @@ UserRouter.post("/register", async (req, res) => {
     if(!userDatasIsValid.valid) return res.status(400).send(JSON.stringify({success: false, message: userDatasIsValid.message, datas: {}}))
     
     const encriptPassword = await encryptingPassword(userDatas.password)
-    const registerResponse = await UserDatabase.registerUser({name: userDatas.name, email: userDatas.email, password: encriptPassword})
+    const registerResponse = await UserDatabase.registerUser({id: userId ,name: userDatas.name, email: userDatas.email, password: encriptPassword})
 
     if(registerResponse.erro) return res.status(400).send(JSON.stringify({success: false, message: registerResponse.message, datas: {}}))
     

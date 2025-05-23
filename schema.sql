@@ -19,7 +19,7 @@ CREATE TABLE question (
 
 
 CREATE TABLE users (
-    id UUID NOT NULL PRIMARY KEY UNIQUE DEFAULT gen_random_uuid(),
+    id UUID NOT NULL PRIMARY KEY UNIQUE,
     email VARCHAR(300) NOT NULL UNIQUE,
     name_alias VARCHAR(100) NOT NULL,
     password VARCHAR(500) NOT NULL,
