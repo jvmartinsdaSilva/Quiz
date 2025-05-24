@@ -5,7 +5,7 @@ import { QuestionContext } from "../../context/QuestionContext.js"
 import { validateAnswers } from "../../services/question_api.js";
 
 import { Card } from "../../components/Card/index.js";
-import { QuestionViewer } from "../../components/QuestionViwer/index.js"
+import { QuestionViewer } from "../../components/QuestionViewer/index.js"
 import { Button } from "../../components/Button/index.js"
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 

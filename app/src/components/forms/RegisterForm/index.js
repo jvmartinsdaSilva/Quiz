@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { object, string, ref } from 'yup'
-
 import { yupResolver } from "@hookform/resolvers/yup"  
+import { useNavigate } from 'react-router-dom';
+
 
 import { Button } from "../../Button/index.js"
 import { Input } from "../../Input/index.js"
+
+import {registerUser} from '../../../services/users_api.js'
 
 import s from '../index.module.css'
 
@@ -18,13 +22,20 @@ const userSchema = object({
 
 
 export const RegisterForm = () => {
+    const [serverMessage, setServerMessage] = useState("")
+    const navegate = useNavigate()
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: "all",
         resolver: yupResolver(userSchema)
     })
 
     const handleSubmitUser = async datas => {
-        console.log(datas)
+        const res = await registerUser(datas)
+        setServerMessage(res.message)
+        if(!res.success) return
+        // saveUserDatas
+        navegate("/menu")
     }
 
     return (
@@ -39,6 +50,7 @@ export const RegisterForm = () => {
             <Input text={"Confirme sua senha"} placeholder="Confirme sua senha" type="password" innerRef={register("confirmPassword")}/>
             <span className={s.messageError}>{errors.confirmPassword?.message}</span>
             <Button textInfo={'Cadastrar-se'} />
+            <span className={s.messageError}>{serverMessage}</span>
         </form>
     )
 }

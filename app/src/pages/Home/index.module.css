@@ -1,4 +1,4 @@
-.container_left{
+.container_left {
     margin: 1em 0em 1em 1em;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     padding: .25em;
 }
 
-.container_right{
+.container_right {
     margin: 1em 1em 1em 0em;
     display: flex;
     flex-direction: column;
@@ -19,14 +19,14 @@
     text-align: center;
 }
 
-.container_left form{
-    overflow: scroll;
+.container_left form {
+    overflow: auto;
     scrollbar-width: none;
     height: 70%;
+
 }
 
-
-.textInfo{
+.textInfo {
     width: 100%;
     font-size: 14px;
     text-align: center;
