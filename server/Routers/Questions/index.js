@@ -13,7 +13,7 @@ const QuestionDatabase = new DatabaseQuestioController()
 const Cache = new CacheQuestions()
 
 
-QuestionRouter.get("/getQuestions/", Authenticate ,async (req, res) => {
+QuestionRouter.get("/getQuestions/" ,async (req, res) => {
     const { themes } = Cache.getThemes() ?? await QuestionDatabase.getThemes()
     const questionTheme = req.query.questionTheme
     if (themes?.indexOf(questionTheme) < 0) return res.status(422).send(JSON.stringify({ success: false, message: "Valores invalidos", datas: {} }))
@@ -43,7 +43,6 @@ QuestionRouter.get("/themes", async (req, res) => {
 
 QuestionRouter.post("/validadeAnswer", async (req, res) => {
     const userAnswers = req.body.userAnswer
-    console.log(userAnswers)
     const questionsId = userAnswers?.map(userAnswer => Object.keys(userAnswer)[0])
 
     const idsOffCache = []

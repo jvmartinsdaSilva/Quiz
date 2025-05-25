@@ -43,7 +43,7 @@ UserRouter.post("/login", async (req, res) => {
     if(!getUser.success) return res.status(400).send(JSON.stringify({success: false, message: getUser.message, datas: {}}))
 
     const checkPassword = await decryptPassword(userDatas.password, getUser.datas.password)
-    if(!checkPassword) return res.status(400).send(JSON.stringify({succes:false, message: "Senha incorreta"}))
+    if(!checkPassword) return res.status(400).send(JSON.stringify({success:false, message: "Senha incorreta"}))
     
     const generateToken = TokenMenu.generateUserToken(getUser.datas.id)
     if (generateToken.erro) return res.status(500).send(JSON.stringify({ success: false, message: generateToken.message, datas: {} }))
