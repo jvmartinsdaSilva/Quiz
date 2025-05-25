@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { QuestionsProvider } from './context/QuestionContext';
+import { UserProvider } from './context/UserContext.js';
 
 import { Home } from './pages/Home/index.js';
 import { MenuGame } from './pages/MenuGame/index.js';
@@ -14,15 +15,22 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <QuestionsProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <UserProvider>
+
         <Routes>
           <Route path='/' Component={Home} />
-          <Route path='/Menu' Component={MenuGame} />
-          <Route path='/questions' Component={Questions} />
-          <Route path='/results' Component={Results} />
         </Routes>
-      </BrowserRouter>
-    </QuestionsProvider>
+
+        <QuestionsProvider>
+          <Routes>
+            <Route path='/Menu' Component={MenuGame} />
+            <Route path='/questions' Component={Questions} />
+            <Route path='/results' Component={Results} />
+          </Routes>
+        </QuestionsProvider>
+
+      </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

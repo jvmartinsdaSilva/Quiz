@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { object, string, ref } from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup"  
 import { useNavigate } from 'react-router-dom';
 
+import {registerUser} from '../../../services/users_api.js'
+import { UserContext } from "../../../context/UserContext.js";
 
 import { Button } from "../../Button/index.js"
 import { Input } from "../../Input/index.js"
 
-import {registerUser} from '../../../services/users_api.js'
 
 import s from '../index.module.css'
 
@@ -22,8 +23,10 @@ const userSchema = object({
 
 
 export const RegisterForm = () => {
+    const {login} = useContext(UserContext)
     const [serverMessage, setServerMessage] = useState("")
     const navegate = useNavigate()
+    
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: "all",
@@ -31,10 +34,17 @@ export const RegisterForm = () => {
     })
 
     const handleSubmitUser = async datas => {
-        const res = await registerUser(datas)
-        setServerMessage(res.message)
-        if(!res.success) return
-        // saveUserDatas
+        const response = await registerUser(datas)
+        setServerMessage(response.message)
+        if(!response.success) return
+
+        const newUser = {
+            id: response.datas.user.id,
+            name: response.datas.user.name,
+            points: response.datas.user.points
+        }
+        
+        login({user: newUser, tolken: response.datas.tolken})
         navegate("/menu")
     }
 

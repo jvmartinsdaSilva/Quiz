@@ -13,5 +13,4 @@ export const registerUser = async datas => {
     } catch (err) {
         return err
     }
-
 }

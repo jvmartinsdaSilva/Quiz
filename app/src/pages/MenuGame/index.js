@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 
 import { getThemes } from '../../services/question_api.js'
+import { UserContext } from '../../context/UserContext.js'
 
 import { Card } from '../../components/Card/index.js'
 import { Option } from '../../components/Option/index.js'
@@ -8,7 +9,9 @@ import { Option } from '../../components/Option/index.js'
 import s from './index.module.css'
 
 export const MenuGame = () => {
+  const { User } = useContext(UserContext)
   const [themes, setThemes] = useState([])
+
 
   const handleThemes = useCallback(async () => {
     const response = await getThemes()
@@ -23,9 +26,9 @@ export const MenuGame = () => {
     <Card>
       <div className={s.container}>
         <menubar className={s.userInfo}>
-          <span>
-            <span>User name</span>
-            <span>300 pontos</span>
+          <span className={s.cardApresentation}>
+            <span>{User.name} - </span>
+            <span>{User.points} PONTOS</span>
           </span>
           <span>
             ⚙️

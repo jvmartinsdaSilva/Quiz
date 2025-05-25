@@ -1,33 +1,33 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    padding: .5em;
-    width: 100%;
-    /* border: 1px solid red; */
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: .5em;
+  width: 100%;
+  /* border: 1px solid red; */
 }
 
-.userInfo{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 0 .5em 0;
-    border-bottom: 1px solid var(--rose-quartz);
-    padding: .5em;
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 .5em 0;
+  border-bottom: 1px solid var(--rose-quartz);
+  padding: .5em;
 }
 
-.userInfo span{
-    margin: 0 .25em;
+.userInfo span {
+  margin: 0 .25em;
 }
 
-.menu{
-    display: flex;
-    margin: 0 auto;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 85%;
-    padding: .5em;
-    overflow: auto;
+.menu {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 85%;
+  padding: .5em;
+  overflow: auto;
 }
 
 
@@ -38,4 +38,9 @@
 
 .menu::-webkit-scrollbar-thumb {
   background: var(--coral);
+}
+
+.cardApresentation {
+  font-weight: 600;
+  color: var(--delft-blue);
 }
