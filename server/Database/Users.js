@@ -6,7 +6,7 @@ export class DatabaseUserController {
         try {
             const client = await pool.connect()
             const datas = await client.query(query)
-            return {message: "Usuário cadastrado com sucesso", datas}
+            return {message: "Query executada", datas}
         } catch (err) {
             return { message: "Erro ao se conetar ao banco", erro: err }         
         }  
@@ -19,9 +19,16 @@ export class DatabaseUserController {
             values: [id, email, name, password]
         }
         const response = await this.#execQuery(query)
-        if(response.erro?.code == "23505") return {erro: response.erro, message: "Usuário ja cadastrado"}
-        if(response.erro) return {erro: response.erro, message: response.message}
+        if(response.erro?.code == "23505") return {success: false, erro: response.erro, message: "Usuário ja cadastrado"}
+        if(response.erro) return {success: false, erro: response.erro, message: response.message}
         
-        return response
+        return {success: true, message: "Usuario criado com sucesso", datas: response.datas}
+    }
+
+    async getUser(userEmail){
+        const query = `SELECT id, email, name_alias, password, user_points  FROM users WHERE users.email = '${userEmail}'`
+        const response = await this.#execQuery(query)
+        if(response.datas.rows.length <= 0) return {success: false, message: "Usuário não encontrado"}
+        return {success: true, message: "Usuário encontrado", datas: response.datas.rows[0]}
     }
 }

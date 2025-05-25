@@ -8,6 +8,7 @@ const server = express()
 server.use(cors())
 server.use(express.json())
 
+
 server.use("/questions", QuestionRouter)
 server.use("/users", UserRouter)
 server.listen(3001, () => console.log("http://localhost:3001"))

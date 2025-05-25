@@ -2,7 +2,7 @@ import express from 'express'
 
 import { DatabaseQuestioController } from '../../Database/Question.js'
 import { CacheQuestions } from '../../Cache/index.js'
-import { formatQuestionsData } from '../../Functions/FormatQuestions.js'
+import { formatQuestionsData } from '../../Functions/FormatDatas.js'
 import { validateUserAnswer } from '../../Functions/ValidadeAnswer.js'
 
 export const QuestionRouter = express.Router()

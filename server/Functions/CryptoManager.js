@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+import bcrypt, { hash } from 'bcrypt'
 
 class SaltGenerator {
     generateSalt() {
@@ -29,4 +29,10 @@ export const encryptingPassword = async (password) => {
     const hash = await new HashGenerator().generateHash(password, salt)
 
     return hash
+}
+
+export const decryptPassword = async (passowrdText, hash) => {
+        return await bcrypt.compare(passowrdText, hash)
+            .then(result => result)
+            .catch(err => err)
 }
