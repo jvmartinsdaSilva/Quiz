@@ -8,7 +8,7 @@ import { UserProvider } from './context/UserContext.js';
 import { Home } from './pages/Home/index.js';
 import { MenuGame } from './pages/MenuGame/index.js';
 import { Questions } from './pages/Questions/index.js';
-import { Results } from './pages/Result';
+import { Results } from './pages/Results/index.js';
 
 import './index.css';
 

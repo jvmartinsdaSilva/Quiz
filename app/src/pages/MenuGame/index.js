@@ -5,6 +5,7 @@ import { UserContext } from '../../context/UserContext.js'
 
 import { Card } from '../../components/Card/index.js'
 import { Option } from '../../components/Option/index.js'
+import { UserBar } from '../../components/UserBar/index.js'
 
 import s from './index.module.css'
 
@@ -25,15 +26,7 @@ export const MenuGame = () => {
   return (
     <Card>
       <div className={s.container}>
-        <menubar className={s.userInfo}>
-          <span className={s.cardApresentation}>
-            <span>{User.name} - </span>
-            <span>{User.points} PONTOS</span>
-          </span>
-          <span>
-            ⚙️
-          </span>
-        </menubar>
+        <UserBar />
         <h3 className='title'>Escolha o tema</h3>
         <div className={s.menu}>
           {themes?.map(theme => <Option key={theme} theme={theme} />)}

@@ -1,23 +1,28 @@
-.answer{
+.answer {
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
     padding: .5em;
-    margin: .25em 0;
+    margin: .7em 0;
     width: 80%;
-    border-radius: 5px;
+    border: 1px solid var(--rose-quartz); 
+
 }
 
-.title{
+.title {
     font-size: 16px;
-    font-weight: bold                           ;
+    font-weight: bold;
+    color: var(--dark-purple);
 }
 
-.correct{
-    color: darkgreen;
+.correct {
+    /* border: 1px solid var(--correctAnswer);  */
+    color: var(--correctAnswer);
 }
 
-.wrong{
-    color:darkred;
+.wrong {
+    color:var(--invalidAnswer);
+    /* border: 1px solid var(--invalidAnswer);  */
+
 }

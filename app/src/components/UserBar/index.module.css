@@ -1,0 +1,24 @@
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 0 .5em 0;
+  border-bottom: 1px solid var(--rose-quartz);
+  padding: .5em;
+}
+
+.userInfo span {
+  margin: 0 .25em;
+}
+
+.cardApresentation {
+  font-weight: 600;
+  color: var(--delft-blue);
+}
+
+.logout{
+  color: var(--coral);
+  cursor: pointer;
+  transform: scale(1.25);
+}

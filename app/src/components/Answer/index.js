@@ -7,6 +7,7 @@ export const Answer = ({result}) => {
         <div className={`${s.answer} ${resultClass}`} key={result.id}>
             <span className={s.title}>{result.title}</span>
             <span>
+               {`Resposta: ${result.rightOptionValue} - `}
                 {result.isCorrect ? "Acertou" : "Errou"}
             </span>
         </div>
