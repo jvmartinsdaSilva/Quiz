@@ -5,13 +5,15 @@ import { CacheQuestions } from '../../Cache/index.js'
 import { formatQuestionsData } from '../../Functions/FormatDatas.js'
 import { validateUserAnswer } from '../../Functions/ValidadeAnswer.js'
 
+import { Authenticate } from '../Authenticate/index.js'
+
 export const QuestionRouter = express.Router()
 
 const QuestionDatabase = new DatabaseQuestioController()
 const Cache = new CacheQuestions()
 
 
-QuestionRouter.get("/getQuestions/", async (req, res) => {
+QuestionRouter.get("/getQuestions/", Authenticate ,async (req, res) => {
     const { themes } = Cache.getThemes() ?? await QuestionDatabase.getThemes()
     const questionTheme = req.query.questionTheme
     if (themes?.indexOf(questionTheme) < 0) return res.status(422).send(JSON.stringify({ success: false, message: "Valores invalidos", datas: {} }))
