@@ -42,7 +42,8 @@ export const QuestionsProvider = ({ children }) => {
         // Verifica se o Id da nova resposta esta incluso na lista de Ids , através de sua posição
         // Se estiver, através de sua posição, troca a resposta antiga da lista de respostas (userAnswers) pela nova resposta
         if (position >= 0) userAnswers[position] = answer
-        else userAnswers.push(answer) // Se não estiver (nova resposta), apenas adiciona
+        else setUserAnswer(prev => [...prev, answer])
+       // else userAnswers.push(answer) // Se não estiver (nova resposta), apenas adiciona
 
         // console.log(userAnswers)
     }

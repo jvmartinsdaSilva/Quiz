@@ -11,6 +11,7 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 
 import s from './index.module.css'
+import { ProgressBar } from "../../components/ProgressBar/index.js";
 
 
 export const Questions = () => {
@@ -37,6 +38,7 @@ export const Questions = () => {
                     <SlArrowLeft className={s.arrow} onClick={() => toggleQuestion(QuestionNumber - 1)} />
                     <SlArrowRight className={s.arrow} onClick={() => toggleQuestion(QuestionNumber + 1)} />
                 </menu>
+                <ProgressBar />
                 <div className={s.validation}>
                     <Button type="submit" textInfo="VALIDAR" />
                     <span>{message}</span>
