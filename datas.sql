@@ -1,21 +1,6 @@
 INSERT INTO themes (question_theme) VALUES ('História'), ('Matemática'), ('Geografia'), ('HTML'), ('CSS'), ('JavaScript'), ('Python'), ('Lógica');
 
 INSERT INTO question (title, theme, right_option, option_A, option_B, option_C, option_D) VALUES 
-('Em que ano ocorreu a Independência do Brasil?', 'História', 'option_B', '1808', '1822', '1889', '1500'),
-('Quem foi o primeiro presidente do Brasil?', 'História', 'option_C', 'Dom Pedro II', 'Juscelino Kubitschek', 'Deodoro da Fonseca', 'Getúlio Vargas'),
-('Qual foi o marco inicial da Revolução Francesa?', 'História', 'option_A', 'Queda da Bastilha', 'Declaração dos Direitos do Homem', 'Golpe do 18 de Brumário', 'Execução de Luís XVI'),
-('Qual país foi responsável por colonizar o Brasil?', 'História', 'option_D', 'Espanha', 'Inglaterra', 'França', 'Portugal'),
-('Quem foi o líder da Revolução Russa de 1917?', 'História', 'option_A', 'Vladimir Lenin', 'Josef Stalin', 'Leon Trótski', 'Mikhail Gorbachev'),
-('Quanto é 7 + 5?', 'Matemática', 'option_C', '10', '11', '12', '13'),
-('Qual é o resultado de 9 × 6?', 'Matemática', 'option_B', '42', '54', '48', '36'),
-('Qual é a raiz quadrada de 81?', 'Matemática', 'option_A', '9', '8', '7', '6'),
-('Se um triângulo tem lados de 3 cm, 4 cm e 5 cm, ele é um triângulo...', 'Matemática', 'option_D', 'Equilátero', 'Isósceles', 'Obtusângulo', 'Retângulo'),
-('Quanto é 15 dividido por 3?', 'Matemática', 'option_B', '4', '5', '6', '7'),
-('Qual é o maior oceano do mundo?', 'Geografia', 'option_A', 'Oceano Pacífico', 'Oceano Atlântico', 'Oceano Índico', 'Oceano Ártico'),
-('Qual é o país com a maior população do mundo?', 'Geografia', 'option_B', 'Estados Unidos', 'China', 'Índia', 'Brasil'),
-('Qual é o maior deserto do mundo?', 'Geografia', 'option_D', 'Deserto de Gobi', 'Deserto do Kalahari', 'Deserto da Arábia', 'Antártida'),
-('Qual é o rio mais longo do mundo?', 'Geografia', 'option_C', 'Rio Amazonas', 'Rio Mississippi', 'Rio Nilo', 'Rio Yangtzé'),
-('Quantos continentes existem no planeta?', 'Geografia', 'option_B', '5', '7', '6', '8'),
 ('Qual tag é usada para criar um link em HTML?', 'HTML', 'option_A', '<a>', '<link>', '<href>', '<url>'),
 ('Qual tag define um parágrafo em HTML?', 'HTML', 'option_B', '<h1>', '<p>', '<div>', '<span>'),
 ('Para que serve a tag <head> em um documento HTML?', 'HTML', 'option_C', 'Exibir o conteúdo', 'Criar rodapé', 'Conter metadados', 'Inserir imagem'),

@@ -53,7 +53,7 @@ UserRouter.post("/login", async (req, res) => {
             id: getUser.datas.id,
             name: getUser.datas.name_alias,
             email: getUser.datas.email,
-            user_points: getUser.datas.user_points
+            points: getUser.datas.user_points
         },
         token: generateToken.token
     }

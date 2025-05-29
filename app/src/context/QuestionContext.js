@@ -30,7 +30,7 @@ export const QuestionsProvider = ({ children }) => {
         const response = await getQuestions(theme)
         setQuestions(response.datas.questions)
         setQuestion(response.datas.questions[0])
-        console.log(response.datas.questions)
+        // console.log(response.datas.questions)
     }
 
     const toggleQuestion = num => {

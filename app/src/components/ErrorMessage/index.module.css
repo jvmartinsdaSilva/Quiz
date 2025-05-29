@@ -1,0 +1,21 @@
+.modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.531);
+    z-index: 5;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+}
+
+.container{
+    width: 80%;
+    height: 80%;
+    background: var(--white);
+    border-radius: 10px;
+}

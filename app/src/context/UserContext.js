@@ -1,10 +1,11 @@
 import { createContext, useState } from 'react';
 
-import {setLocalStorage} from '../services/LocalStorage.js'
+import {setLocalStorage, cleanStorage} from '../services/LocalStorage.js'
 
 export const UserContext = createContext({
     User: {},
     login: datas => {},
+    logout: () => {},
     updatePoints: points => {}
 })
 
@@ -12,10 +13,10 @@ export const  UserProvider = ({children}) => {
     const [User, setUser] = useState({})
 
     const  login = datas => {
-        const {user, tolken} = datas
+        const {user, token} = datas
         setUser(user)
         setLocalStorage("user", JSON.stringify(user))
-        setLocalStorage("tolken", tolken)
+        setLocalStorage("token", token)
     }
 
     const updatePoints = newPoints => {
@@ -23,5 +24,9 @@ export const  UserProvider = ({children}) => {
         setUser(prev => ({...prev, points: points + newPoints}))
     }
 
-    return <UserContext.Provider value={{User, login, updatePoints}}>{children}</UserContext.Provider>
+    const logout = () => {
+        cleanStorage()
+    }
+
+    return <UserContext.Provider value={{User, login, logout, updatePoints}}>{children}</UserContext.Provider>
 }

@@ -20,7 +20,7 @@ export const Questions = () => {
     const { QuestionsSelect, QuestionNumber, toggleQuestion, UsersAnswers, setAnswersValidation } = useContext(QuestionContext)
     const [message, setMessage] = useState("")
     const navegate = useNavigate()
-    console.log(QuestionsSelect)
+    // console.log(QuestionsSelect)
 
     const handleSubmit = async event => {
         event.preventDefault()

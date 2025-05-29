@@ -44,7 +44,7 @@ export const RegisterForm = () => {
             points: response.datas.user.points
         }
         
-        login({user: newUser, tolken: response.datas.tolken})
+        login({user: newUser, token: response.datas.token})
         navegate("/menu")
     }
 
