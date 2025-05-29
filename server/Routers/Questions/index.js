@@ -1,6 +1,8 @@
 import express from 'express'
 
 import { DatabaseQuestioController } from '../../Database/Question.js'
+import { DatabaseUserController } from "../../Database/Users.js"
+
 import { CacheQuestions } from '../../Cache/index.js'
 import { formatQuestionsData } from '../../Functions/FormatDatas.js'
 import { validateUserAnswer } from '../../Functions/ValidadeAnswer.js'
@@ -9,11 +11,14 @@ import { Authenticate } from '../Authenticate/index.js'
 
 export const QuestionRouter = express.Router()
 
+
 const QuestionDatabase = new DatabaseQuestioController()
+const UserDatabase = new DatabaseUserController()
+
 const Cache = new CacheQuestions()
 
 
-QuestionRouter.get("/getQuestions/" ,async (req, res) => {
+QuestionRouter.get("/getQuestions/", async (req, res) => {
     const { themes } = Cache.getThemes() ?? await QuestionDatabase.getThemes()
     const questionTheme = req.query.questionTheme
     if (themes?.indexOf(questionTheme) < 0) return res.status(422).send(JSON.stringify({ success: false, message: "Valores invalidos", datas: {} }))
@@ -42,6 +47,7 @@ QuestionRouter.get("/themes", async (req, res) => {
 })
 
 QuestionRouter.post("/validadeAnswer", async (req, res) => {
+    const { user_id } = req.headers
     const userAnswers = req.body.userAnswer
     const questionsId = userAnswers?.map(userAnswer => Object.keys(userAnswer)[0])
 
@@ -54,13 +60,14 @@ QuestionRouter.post("/validadeAnswer", async (req, res) => {
         else idsOffCache.push(id)
     })
 
-    if(idsOffCache.length > 0) {
+    if (idsOffCache.length > 0) {
         const { datas, erro, message } = await QuestionDatabase.getQuestionsById(idsOffCache)
-        if (erro) return res.status(500).send(JSON.stringify({ success: false, message, datas: [] }))
+        if (erro) return res.status(500).send(JSON.stringify({ success: false, message, datas: {} }))
         questions.push(...datas)
     }
 
-    const answerValidates = validateUserAnswer(userAnswers, questions)
+    const { answerValidates, points } = validateUserAnswer(userAnswers, questions)
+    UserDatabase.attUserPoints(user_id, points)
 
-    res.status(202).send(JSON.stringify({ success: true, message: "Respostas Validadas com suceso", datas: answerValidates }))
+    res.status(202).send(JSON.stringify({ success: true, message: "Respostas Validadas com suceso", datas: { answerValidates, points } }))
 })

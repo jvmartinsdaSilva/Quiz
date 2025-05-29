@@ -4,7 +4,8 @@ import {setLocalStorage} from '../services/LocalStorage.js'
 
 export const UserContext = createContext({
     User: {},
-    login: datas => {}
+    login: datas => {},
+    updatePoints: points => {}
 })
 
 export const  UserProvider = ({children}) => {
@@ -17,5 +18,10 @@ export const  UserProvider = ({children}) => {
         setLocalStorage("tolken", tolken)
     }
 
-    return <UserContext.Provider value={{User, login}}>{children}</UserContext.Provider>
+    const updatePoints = newPoints => {
+        const {points} = User
+        setUser(prev => ({...prev, points: points + newPoints}))
+    }
+
+    return <UserContext.Provider value={{User, login, updatePoints}}>{children}</UserContext.Provider>
 }

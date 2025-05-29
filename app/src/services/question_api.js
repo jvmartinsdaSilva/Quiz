@@ -11,11 +11,12 @@ export const getQuestions = async theme => {
 }
 
 
-export const validateAnswers = async userAnswer => {
+export const validateAnswers = async (userAnswer, userId) => {
     const datas = await fetch("http://localhost:3001/questions/validadeAnswer", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
+            "user_id": userId
         },
         body: JSON.stringify({userAnswer: userAnswer})
     })

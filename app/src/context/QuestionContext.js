@@ -1,5 +1,7 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useContext } from 'react';
+
 import { getQuestions } from '../services/question_api';
+import { UserContext } from './UserContext.js';
 
 export const QuestionContext = createContext({
     UsersAnswers: [],
@@ -15,8 +17,11 @@ export const QuestionContext = createContext({
 })
 
 export const QuestionsProvider = ({ children }) => {
+    const {updatePoints} = useContext(UserContext)
+
+
     const [questions, setQuestions] = useState([])
-    const [question, setQuestion] = useState()
+    const [question, setQuestion] = useState(null)
     const [questionNumber, setQuestionNumber] = useState(0)
     const [userAnswers, setUserAnswer] = useState([])
     const [results, setResults] = useState([])
@@ -42,8 +47,7 @@ export const QuestionsProvider = ({ children }) => {
         // Verifica se o Id da nova resposta esta incluso na lista de Ids , através de sua posição
         // Se estiver, através de sua posição, troca a resposta antiga da lista de respostas (userAnswers) pela nova resposta
         if (position >= 0) userAnswers[position] = answer
-        else setUserAnswer(prev => [...prev, answer])
-       // else userAnswers.push(answer) // Se não estiver (nova resposta), apenas adiciona
+        else setUserAnswer(prev => [...prev, answer]) // Se não estiver (nova resposta), apenas adiciona
 
         // console.log(userAnswers)
     }
@@ -55,7 +59,10 @@ export const QuestionsProvider = ({ children }) => {
         setResults([])
     }
 
-    const saveAnswerValidation = validations => setResults(validations)
+    const saveAnswerValidation = datas => {
+        setResults(datas.answerValidates)
+        updatePoints(datas.points)
+    }
 
     return <QuestionContext.Provider
         value={{
