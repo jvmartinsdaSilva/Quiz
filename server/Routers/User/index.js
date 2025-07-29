@@ -10,7 +10,12 @@ const UserDatabase = new DatabaseUserController()
 const TokenMenu = new TokenMenager()
 
 export const UserRouter = express.Router()
-
+/*
+    Registro de usuários
+    Recebe o objeto contendo informações do usuário (userDatas)
+    Valida e cadastra no bd
+    userDatas = {name, email, password, confirmPassword}
+*/
 UserRouter.post("/register", async (req, res) => {
     const userId = uuidv4()
     const { userDatas } = req.body
@@ -30,6 +35,13 @@ UserRouter.post("/register", async (req, res) => {
     const datas = { user: { id: userId, name: userDatas.name, points: 0 }, token: generateToken.token }
     return res.status(202).send(JSON.stringify({ success: true, message: registerResponse.message, datas }))
 })
+
+/*
+    Autenticação de usuários
+    Recebe o objeto contendo informações do usuário (userDatas)
+    Valida informações, e retorna token de acesso se bem sucedido 
+    userDatas = {email, password}
+*/
 
 UserRouter.post("/login", async (req, res) => {
     const {userDatas} =  req.body

@@ -1,5 +1,10 @@
 import { TokenMenager } from "../../Functions/TokenMenager.js"
 
+
+/*
+    Verifica se token vinculado ao usuário ainda é valido.
+
+*/
 export const Authenticate = async (req, res, next) => {
     const { authenticate_token, user_id } = req.headers
     const TokenMenu = new TokenMenager()

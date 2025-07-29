@@ -1,4 +1,4 @@
-export const formatQuestionsData = datas => {
+export const formatQuestionsData = datas => { // Formata e padroniza as questões antes de entregar a aplicação
     const questions = datas.map(data => {
         return {
             id: data.id,
